@@ -1,0 +1,10 @@
+
+
+.card{
+    width: 100%;
+    background-color: var(--beige);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

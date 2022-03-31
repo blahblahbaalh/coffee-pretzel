@@ -1,0 +1,61 @@
+/* =============================== */
+@keyframes bounce {
+	0%, 100%, 20%, 50%, 80% {
+		-webkit-transform: translateY(0);
+		-ms-transform:     translateY(0);
+		transform:         translateY(0)
+	}
+	40% {
+		-webkit-transform: translateY(-30px);
+		-ms-transform:     translateY(-30px);
+		transform:         translateY(-30px)
+	}
+	60% {
+		-webkit-transform: translateY(-15px);
+		-ms-transform:     translateY(-15px);
+		transform:         translateY(-15px)
+	}
+}
+
+/* =============================== */
+
+.button {
+  background-color: var(--black);
+  color: var(--white);
+  font-family: var(--handwrittenFont);
+  font-size: 2rem;
+  border: none;
+  width: 200px;
+  position: relative;
+  cursor:pointer;
+
+}
+
+
+/* For triangle shape */
+.button::after {
+  content: "";
+  display: block;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  transform: translateY(100%);
+/* FOR TRIANGLE SHAPE */
+  border-left: 100px solid transparent;
+  border-right: 100px solid transparent;
+  border-top: 50px solid var(--black);
+}
+
+
+
+/* ! THIS ISNT WORKING */
+.button span{
+    /* background-color: red; */
+    position: relative;
+
+}
+span:hover {
+    cursor: pointer;
+    animation-name: bounce;
+    -moz-animation-name: bounce;
+  }

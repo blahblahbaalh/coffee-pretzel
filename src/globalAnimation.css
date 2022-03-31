@@ -1,0 +1,14 @@
+
+@keyframes jingle {
+    to {
+        transform: rotate(0);
+    }
+    from {
+        transform: rotate(10);
+    }
+}
+
+/*! ANIMATION NOT WORKING */
+.animateJingle {
+    animation: 3s infinite alternate jingle;
+}

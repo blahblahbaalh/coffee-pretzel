@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Merriweather+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Playfair+Display+SC:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap');
+/* font-family: 'Kalam', cursive;
+font-family: 'Merriweather Sans', sans-serif;
+font-family: 'Playfair Display SC', serif; */
+:root{
+    box-sizing: border-box;
+    font-size: calc(0.5rem * 1vw);
+    /* ------------FONTS------------ */
+    --logoFont: 'Playfair Display SC', serif, sans-serif;
+    --handwrittenFont: 'Kalam', cursive, sans-serif;
+    --merriweatherFont: 'Merriweather Sans', sans-serif;
+    /* -----------COLORS------------- */
+    --brown: #C69B7B;
+    --grey: #C5BDB9;
+    --beige: #EBDAD1;
+    --peach: #FEEEE1; 
+    --lightPeach: #FFFBFB;
+    --black: #121213;
+    --white: #ffff;
+    --grey: #8D8D8D;
+    --shadow: drop-shadow(0 10px 4px rgba(128, 111, 111, 0.411));
+
+}
+
+*, ::before, ::after {
+    box-sizing: inherit;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--merriweatherFont);
+    width: 100vw;
+    
+
+}
+
+header, section, .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 1.5rem;
+    width: 100%;
+    /* FOR BACKGROUND-IMAGE: URL CENTER */
+    background-position: center top; 
+    object-fit: contain;
+    background-repeat: no-repeat;
+}
+
+header, section {
+    flex-direction: row;
+}
+
+img {
+    object-fit: contain;
+
+}

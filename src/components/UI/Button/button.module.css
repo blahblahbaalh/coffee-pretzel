@@ -1,0 +1,15 @@
+
+.button {
+    background-color: var(--black);
+    border: none;
+    font-family: var(--handwrittenFont);
+    font-size: 2rem;
+    color: var(--white);
+    line-height: 35px;
+    padding: 0 50px;
+    cursor: pointer;
+
+}
+
+
+
