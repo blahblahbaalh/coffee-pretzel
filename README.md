@@ -9,7 +9,7 @@ Be in the ultimate zen-mode, overlooking gorgeous window-side scenary, among oth
 
 # ITERATIONS
 ## Week 0
-- [ ] User flow and UIUX: Figma: https://www.figma.com/file/nq7GTyLmM6qK5nGmYTVW0D/Coffee%26Pretzel?node-id=38%3A4528
+- [ ] User flow and UIUX: Figma: https://www.figma.com/file/nq7GTyLmM6qK5nGmYTVW0D/Coffee%26Pretzel?node-id=3%3A847
 
 
 # Week 1 (CURRENT)
