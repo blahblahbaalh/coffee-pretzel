@@ -3,22 +3,18 @@ import "./globalAnimation.css";
 import Navbar from "./components/common/Navbar/Navbar";
 import Main from "./components/pages/Main/Main";
 import AvatarHead from "./components/common/AvatarHead/AvatarHead";
-
-const userData = {
-  userId: 1,
-  peep: "peep1",
-  name: "Mr Blah",
-  notification: 1,
-  message: "ehhlloo",
-
-}
+import { useContext} from "react";
+import AuthContext from "./store/AuthContextProvider";
 
 function App() {
+  const {userAvatar, notification} = useContext(AuthContext);
+  console.log("APP userAvatar", userAvatar);
+
   return (
     <>
    <Navbar />
    <Main />
-   {userData.peep && <AvatarHead peep={userData.peep} notification={userData.notification}/>}
+   {userAvatar && <AvatarHead peep={userAvatar} notification={notification}/>}
     </>
   );
 }

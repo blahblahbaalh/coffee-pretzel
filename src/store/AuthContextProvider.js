@@ -3,21 +3,21 @@ const { v4: uuid } = require('uuid');
 
 //1.2 
 const initialState = {
-    userId: "",
-    username: "",
-    userAvatar: "",
+    userId: null,
+    username: null,
+    userAvatar: null,
     notification: {
         number: 0,
         messages: []
     },
     cafe: {
-        location: "",
-        drink: "",
+        location: null,
+        drink: null,
     },
     todo: [
         {
-            task1: "",
-            taskId: "",
+            task1: null,
+            taskId: null,
             totalPomodoro: 0,
             remainingPomodoro: 0,
             isCompleted: false,
@@ -28,7 +28,8 @@ const initialState = {
 //1.
 const AuthContext = createContext({
     ...initialState,
-    createNewUser: () => {}, //<-- 5.
+    setAvatar: () => {},//<-- 5.
+    createNewUser: () => {}, 
     completeAPomdoro: () => {},
     setTaskComplete: () => {},
     deleteTask: () => {},
@@ -38,7 +39,8 @@ const AuthContext = createContext({
 });
 
 //4.2 actions list
-export const ACTIONS = {
+const ACTIONS = {
+    SET_AVATAR: "SET_AVATAR",
     CREATE_NEW_USER: "CREATE_NEW_USER",
     COMPLETE_A_POMODORO: "COMPLETE_A_POMODORO",
     SET_TASK_COMPLETE: "SET_TASK_COMPLETE",
@@ -52,13 +54,19 @@ export const ACTIONS = {
 //4. reducer
 const reducer = (state, action) => {
     switch (action.type){
+        case ACTIONS.SET_AVATAR: {
+            const { userAvatar } = action.payload;
+            return {
+                ...state,
+                userId: uuid(),
+                userAvatar
+            }
+        }
         case ACTIONS.CREATE_NEW_USER: {
-           const {username, userAvatar, location, drink, todo } = action.payload;
+           const {username, location, drink, todo } = action.payload;
            return {
                ...state,
-               userId: uuid(),
                username,
-               userAvatar,
                cafe: {location, drink},
                todo: todo.map(each => ({...each, taskId: uuid(), remainingPomodoro: 0, isCompleted: false}))
            }
@@ -133,37 +141,57 @@ const reducer = (state, action) => {
     }
 }
 
-
+// ======================================================================================//
 export function AuthContextProvider({children}){
 
     //3. 
     const [ stateAuth, dispatchAuth ] = useReducer(reducer, initialState);
 
-    //6. Creating UFO fns for createContext
-    const createNewUser = ({username, userAvatar, location, drink, todo }) => {
-        dispatchAuth({type: ACTIONS.CREATE_NEW_USER, payload: {username, userAvatar, location, drink, todo }});
+    const setAvatar = (userAvatar) => {
+        console.log("authcontext", userAvatar);
+        dispatchAuth({type: ACTIONS.SET_AVATAR, payload: {userAvatar}});
     }
 
-    const 
+    //6. Creating UFO fns for createContext
+    const createNewUser = ({username, location, drink, todo }) => {
+        dispatchAuth({type: ACTIONS.CREATE_NEW_USER, payload: {username, location, drink, todo }});
+    }
 
+    const completeAPomdoro = (taskId) => {
+        dispatchAuth({type: ACTIONS.COMPLETE_A_POMODORO, payload: {taskId}});
+    }
 
-    const AuthContext = createContext({
-        ...initialState,
-        createNewUser: () => {}, //<-- 5.
-        completeAPomdoro: () => {},
-        setTaskComplete: () => {},
-        deleteTask: () => {},
-        addNotification: () => {},
-        resetNotification: () => {},
-    
-    });
+    const setTaskComplete = (taskId) => {
+        dispatchAuth({type: ACTIONS.SET_TASK_COMPLETE, payload: {taskId}})
+    }
 
+    const deleteTask = (taskId) => {
+        dispatchAuth({type: ACTIONS.DELETE_TASK, payload: {taskId}})
+    }
 
+    const addNotification = (message) => {
+        dispatchAuth({type: ACTIONS.ADD_NOTIFICATION, payload: {message}})
+    }
+
+    const resetNotification = () => {
+        dispatchAuth({type: ACTIONS.RESET_NOTIFICATION})
+    }
+
+    const values = {
+        ...stateAuth,
+        setAvatar,
+        createNewUser,
+        completeAPomdoro,
+        setTaskComplete,
+        deleteTask,
+        addNotification,
+        resetNotification,
+    }
 
 
     return(
         // 2.
-        <AuthContext.Provider>
+        <AuthContext.Provider value={values}>
             {children}
         </AuthContext.Provider>
     )

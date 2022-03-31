@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import { AuthContextProvider } from './store/AuthContextProvider';
 
 ReactDOM.render(
-  <React.StrictMode>
+  <AuthContextProvider>
     <App />
-  </React.StrictMode>,
+    </AuthContextProvider>,
   document.getElementById('root')
 );
 

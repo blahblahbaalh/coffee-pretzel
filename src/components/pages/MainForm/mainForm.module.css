@@ -1,4 +1,4 @@
-/* =============================== */
+/* ==============MAIN FORM CSS================= */
 
 .mainForm{
     flex-direction: column;    
@@ -11,9 +11,18 @@
 .mainForm h2 {
     text-transform: uppercase;
     font-family: var(--logoFont);
-    letter-spacing: 1px;
+    /* letter-spacing: px; */
     line-height: 0;
 }
+
+/* -------MEDIA QUERY------------ */
+@media (max-width: 442px){
+    .mainForm h2 {
+        line-height: 1;
+    }
+    
+}
+/* ------------------- */
 
 /* ================ FORMA CSS =============== */
 .formA {
