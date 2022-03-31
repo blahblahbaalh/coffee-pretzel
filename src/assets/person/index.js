@@ -1,0 +1,12 @@
+export const peep1 = require("./peep-1.png");
+export const peep2 = require("./peep-2.png");
+export const peep3 = require("./peep-3.png");
+export const peep4 = require("./peep-4.png");
+export const peep5 = require("./peep-5.png");
+export const peep6 = require("./peep-6.png");
+export const peep7 = require("./peep-7.png");
+export const peep8 = require("./peep-8.png");
+export const peep9 = require("./peep-9.png");
+export const peep10 = require("./peep-10.png");
+export const peep11 = require("./peep-11.png");
+export const peep12 = require("./peep-12.png");

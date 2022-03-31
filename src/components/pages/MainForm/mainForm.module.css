@@ -1,7 +1,7 @@
 /* =============================== */
 
 .mainForm{
-    flex-direction: column;
+    flex-direction: column;    
 }
 
 .mainForm > img {
@@ -16,3 +16,30 @@
 }
 
 /* ================ FORMA CSS =============== */
+.formA {
+    max-height: 90vh;
+    overflow-y: scroll;
+}
+
+.formA .peeps{
+    width: 60vw;
+    padding-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    place-items: center;
+}
+
+.formA .peeps img {
+    max-height: 100%;
+}
+
+
+.formA .peeps img:hover {
+    background-color: var(--beige);
+}
+
+/* ================ Button CSS =============== */
+.button {
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
