@@ -26,9 +26,11 @@ const initialState = {
 };
 
 //1.
-const AuthContext = createContext({
+export const AuthContext = createContext({
     ...initialState,
-    setAvatar: () => {},//<-- 5.
+    setAvatar: () => {},
+    setLocation: () => {},
+    setDrink: () => {},
     createNewUser: () => {}, 
     completeAPomdoro: () => {},
     setTaskComplete: () => {},
@@ -41,6 +43,8 @@ const AuthContext = createContext({
 //4.2 actions list
 const ACTIONS = {
     SET_AVATAR: "SET_AVATAR",
+    SET_LOCATION: "SET_LOCATION",
+    SET_DRINK: "SET_DRINK",
     CREATE_NEW_USER: "CREATE_NEW_USER",
     COMPLETE_A_POMODORO: "COMPLETE_A_POMODORO",
     SET_TASK_COMPLETE: "SET_TASK_COMPLETE",
@@ -60,6 +64,26 @@ const reducer = (state, action) => {
                 ...state,
                 userId: uuid(),
                 userAvatar
+            }
+        }
+        case ACTIONS.SET_LOCATION: {
+            const {id, location} = action.payload;
+            return{
+                ...state,
+                cafe:{
+                    ...state.cafe,
+                    location: {id, location},
+                }
+            }
+        }
+        case ACTIONS.SET_DRINK: {
+            const {id, drink } = action.payload;
+            return{
+                ...state,
+                cafe: {
+                    ...state.cafe,
+                    drinks: {id, drink}
+                }
             }
         }
         case ACTIONS.CREATE_NEW_USER: {
@@ -142,7 +166,7 @@ const reducer = (state, action) => {
 }
 
 // ======================================================================================//
-export function AuthContextProvider({children}){
+function AuthContextProvider({children}){
 
     //3. 
     const [ stateAuth, dispatchAuth ] = useReducer(reducer, initialState);
@@ -155,6 +179,14 @@ export function AuthContextProvider({children}){
     //6. Creating UFO fns for createContext
     const createNewUser = ({username, location, drink, todo }) => {
         dispatchAuth({type: ACTIONS.CREATE_NEW_USER, payload: {username, location, drink, todo }});
+    }
+
+    const setLocation = ({id, location, link}) => {
+        dispatchAuth({type: ACTIONS.SET_LOCATION, payload: {id, location, link}})
+    }
+
+    const setDrink = ({id, drink}) => {
+        dispatchAuth({type: ACTIONS.SET_DRINK, payload: {id, drink}})
     }
 
     const completeAPomdoro = (taskId) => {
@@ -180,6 +212,8 @@ export function AuthContextProvider({children}){
     const values = {
         ...stateAuth,
         setAvatar,
+        setLocation,
+        setDrink,
         createNewUser,
         completeAPomdoro,
         setTaskComplete,
@@ -197,4 +231,4 @@ export function AuthContextProvider({children}){
     )
 }
 
-export default AuthContext;
+export default AuthContextProvider;

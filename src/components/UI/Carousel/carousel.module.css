@@ -1,0 +1,55 @@
+@keyframes myRotation {
+  0% {
+    visibility: hidden;
+    transform: rotate(180deg);
+  }
+  45% {
+    visibility: visible;
+    transform: rotate(0deg);
+  }
+  50% {
+    visibility: visible;
+    transform: rotate(0deg);
+  }
+  100% {
+    visibility: hidden;
+    transform: rotate(-180deg);
+
+  }
+
+}
+
+
+/* ===================== SECTION BANNER CSS ======================= */
+.carousel {
+  text-align:center;
+  overflow-y: hidden;
+}
+
+.carousel__bg {
+  min-width:100vw;
+  object-fit:cover;
+  min-height: 80vh;
+}
+
+.animate {
+  transform-origin: bottom center;
+  animation-duration: 5s;
+	animation-fill-mode: both;
+  animation-name: myRotation;
+  animation-iteration-count: infinite;
+  /* animation-delay: 2s; */
+}
+
+
+
+h1 {
+  width: 40vw;
+  min-width: 250px;
+  margin:auto;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  z-index: 3;
+  position: relative;
+
+}

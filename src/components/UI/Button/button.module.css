@@ -1,15 +1,20 @@
 
 .button {
-    background-color: var(--black);
-    border: none;
+    background-color: var(--white);
     font-family: var(--handwrittenFont);
+    text-transform: uppercase();
+    border: 1px solid black;
+    border-radius: 2px;
+    min-width: 300px;
     font-size: 2rem;
-    color: var(--white);
-    line-height: 35px;
-    padding: 0 50px;
+    padding: 5px 50px;
     cursor: pointer;
+    margin: 10px;
 
 }
 
+.button:hover {
+    background-color: var(--black);
+    color: white;
 
-
+}

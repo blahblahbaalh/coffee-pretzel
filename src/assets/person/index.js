@@ -1,12 +1,27 @@
-export const peep1 = require("./peep-1.png");
-export const peep2 = require("./peep-2.png");
-export const peep3 = require("./peep-3.png");
-export const peep4 = require("./peep-4.png");
-export const peep5 = require("./peep-5.png");
-export const peep6 = require("./peep-6.png");
-export const peep7 = require("./peep-7.png");
-export const peep8 = require("./peep-8.png");
-export const peep9 = require("./peep-9.png");
-export const peep10 = require("./peep-10.png");
-export const peep11 = require("./peep-11.png");
-export const peep12 = require("./peep-12.png");
+import peep1 from "./peep-1.png";
+import peep2 from "./peep-2.png";
+import peep3 from "./peep-3.png";
+import peep4 from "./peep-4.png";
+import peep5 from "./peep-5.png";
+import peep6 from "./peep-6.png";
+import peep7 from "./peep-7.png";
+import peep8 from "./peep-8.png";
+import peep9 from "./peep-9.png";
+import peep10 from "./peep-10.png";
+import peep11 from "./peep-11.png";
+import peep12 from "./peep-12.png";
+
+export const peeps = {
+    peep1,
+    peep2,
+    peep3,
+    peep4,
+    peep5,
+    peep6,
+    peep7,
+    peep8,
+    peep9,
+    peep10,
+    peep11,
+    peep12,
+}

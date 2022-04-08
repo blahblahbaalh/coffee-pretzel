@@ -1,0 +1,23 @@
+
+/* ================ FORMA CSS =============== */
+.form {
+    max-height: 90vh;
+}
+
+.form .peeps{
+    width: 60vw;
+    padding-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    place-items: center;
+}
+
+.form .peeps img {
+    max-height: 100%;
+}
+
+
+.form .peeps img:hover {
+    background-color: var(--beige);
+}
+

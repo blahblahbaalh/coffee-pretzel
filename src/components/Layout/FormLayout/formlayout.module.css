@@ -1,0 +1,38 @@
+/* ============================ OVERALL: FORM CSS ============================== */
+
+.form {
+}
+
+/* ============================ FORM: HEADER CSS ============================== */
+
+.form__header {
+    /* require both position + top for sticky to work */
+    position: sticky;
+    top: 0; 
+    /* --- */
+    z-index:999;
+    background-color: white;
+
+}
+
+.logo {
+    width: 30vw;
+    min-width: 300px;
+    margin:auto;
+}
+
+.title {
+    font-family: var(--logoFont);
+    text-transform: uppercase;
+    padding-top: 0;
+}
+
+/* ============================ FORM: BUTTON CSS ============================== */
+
+.button {
+    width: 30vw;
+    min-width: 300px;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}

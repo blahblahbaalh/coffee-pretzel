@@ -1,0 +1,31 @@
+/* ==============MAIN FORM CSS================= */
+
+.register{
+    flex-direction: column;    
+}
+
+.register > img {
+    width: 30vw;
+    min-width: 300px;
+    
+}
+.register h1 {
+    text-transform: uppercase;
+    font-family: var(--logoFont);
+    /* letter-spacing: px; */
+    line-height: 0;
+}
+
+
+.button {
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+/* -------MEDIA QUERY------------ */
+@media (max-width: 442px){
+    .register h1 {
+        line-height: 1;
+    }
+    
+}

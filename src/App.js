@@ -1,21 +1,29 @@
+import { Routes, Route, Navigate } from "react-router-dom";
 import "./global.css";
 import "./globalAnimation.css";
-import Navbar from "./components/common/Navbar/Navbar";
-import Main from "./components/pages/Main/Main";
-import AvatarHead from "./components/common/AvatarHead/AvatarHead";
-import { useContext} from "react";
-import AuthContext from "./store/AuthContextProvider";
+import Layout from "./components/Layout/Layout/Layout";
+import CafePage from "./pages/CafePage";
+import LandingPage from "./pages/LandingPage/LandingPage";
+import NotFoundPage from "./pages/NotFoundPage";
+import RegisterPage from "./pages/RegisterPage";
+import PeopleForm from "./components/Form/PaperForm";
+import PaperForm from "./components/Form/PaperForm";
 
 function App() {
-  const {userAvatar, notification} = useContext(AuthContext);
-  console.log("APP userAvatar", userAvatar);
-
   return (
-    <>
-   <Navbar />
-   <Main />
-   {userAvatar && <AvatarHead peep={userAvatar} notification={notification}/>}
-    </>
+    <Layout>
+      <Routes>
+        <Route path="/" element={<Navigate to="/home" />} />
+        <Route path="/home/*" element={<LandingPage />} />
+        <Route path="/register/*" element={<RegisterPage />}>
+          <Route path="step1" element={<PeopleForm />} />
+          <Route path="step2" element={<PaperForm />} />
+          <Route path="step3" element={<PaperForm />} />
+        </Route>
+        <Route path="/cafe/:locationId" element={<CafePage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </Layout>
   );
 }
 
