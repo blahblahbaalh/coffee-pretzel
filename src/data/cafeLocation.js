@@ -1,44 +1,44 @@
 
 export const cafeLocationList = [
     {
-      location: "venice",
+      location: "Venice",
       id: "HpZAez2oYsA",
     },
     {
-      location: "thailand",
+      location: "Thailand",
       id: "EM1JZxyNe7g",
     },
     {
-      location: "seoul",
+      location: "Seoul",
       id: "-JhoMGoAfFc",
     },
     {
-      location: "taiwan",
+      location: "Taiwan",
       id: "UCG1aXVO8H8",
     },
     {
-      location: "singapore",
+      location: "Singapore",
       id: "5dUaPnS8yhQ",
     },
     {
-      location: "boston",
+      location: "Boston",
       id: "nyeb_JgSFHE",
     },
     {
-      location: "tokyo",
+      location: "Tokyo",
     //   link: "X437XmpsopA",
-    id: "HpdO5Kq3o7Y",
+      id: "HpdO5Kq3o7Y",
     },
     {
-      location: "space",
+      location: "Space",
       id: "86YLFOog4GM",
     },
     {
-      location: "alaska",
+      location: "Alaska",
       id: "lR0XJsz7_dc",
     },
     {
-      location: "manhattan",
+      location: "Manhattan",
       id: "AdUw5RdyZxI",
     },
   ];

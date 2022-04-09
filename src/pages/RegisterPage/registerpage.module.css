@@ -1,0 +1,119 @@
+/* =================================== COMMON CSS ACROSS ========================================= */
+.buttonok {
+    display: block;
+    margin-left: auto;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+/* =================================== COMMON CSS: .SELECT + .HOVER ========================================= */
+.selected::after, 
+.selected::before, 
+.hover:hover::before{
+    content: "";
+    display: block;
+    background-repeat: no-repeat;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: 100%;
+}
+
+.selected::before {
+    background-image: url("../../assets/doodles/long-circle.png");
+}
+
+.selected::after {
+    background-image: url("../../assets/doodles/star.png");
+    background-size: 50%;
+    bottom: 0;
+    right: -100px;
+}
+
+.hover:hover::before {
+    background-image: url("../../assets/doodles/long-circle.png");
+}
+
+
+/* ========================MAIN-COMPONENT: REGISTER CSS ============================== */
+.register {
+
+}
+
+/* ========================SUB-COMPONENT: LOCATION CSS ============================== */
+.location {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+}
+
+.location img {
+    grid-template-columns: 1 / 2;
+    grid-template-rows: 1 / -1;
+}
+
+.location ul {
+    grid-template-columns: 2 / 3;
+    text-align:left;
+}
+
+.location li::marker {
+    content: "\2662"; /*To style the bullet markers of li*/
+    font-size: 1.5rem;
+}
+
+.location li:hover::marker, .location .selected::marker{
+    content: "\2666"; /*To style the bullet markers of li: on hover + on selected*/
+}
+
+.location label {
+    margin-left: 20px;
+    font-size: 1.25rem;
+    position: relative; /* required for the psuedo positioning to work*/
+
+}
+
+.location .hover:hover::before,
+.location .selected::before,
+.location .selected::after {
+    width:100px;
+    height:40px;
+}
+
+.location .hover:hover::before,
+.location .selected::before {
+    top: 0;
+    left: 0;
+}
+
+
+/* ========================SUB-COMPONENT: SETTODO CSS ============================== */
+.drinks {
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-gap: 10px;
+    padding: 0 15vw;
+    align-items: flex-end;
+
+}
+
+.drinks img {
+    max-height: 200px;
+}
+
+.drinks .hover, .drinks .selected{
+    position: relative;
+}
+
+.drinks .hover:hover::before {
+    background-image: url("../../assets/doodles/big-circle.png");
+}
+
+.drinks .selected::before {
+    background-image: url("../../assets/doodles/big-circle.png");
+}
+
+/* ========================SUB-COMPONENT: SIGNNAME CSS ============================== */
+

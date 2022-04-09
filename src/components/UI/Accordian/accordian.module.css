@@ -1,0 +1,51 @@
+
+/* ============================ OVERALL: ACCORDIAN CSS ============================== */
+.accordianHeader {
+    border: none;
+    background-color: transparent;
+    font-family: var(--logoFont);
+    text-transform: uppercase;
+    margin: auto;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: block; /* required for margin: auto to work*/
+    margin: auto;
+    width: 80vw;
+    position: relative; 
+}
+
+.accordianHeader::before, .accordianHeader::after {
+    content: "";
+    width: 30%;
+    display: inline-block;
+    position: absolute;
+    border-bottom: 2px solid black;
+    transform: translateY(-50%);
+    top: 50%;
+}
+
+.accordianHeader::before {
+    margin-right: 50px;
+    left: 0;
+}
+
+.accordianHeader::after {
+    margin-left: 50px;
+    right: 0;
+}
+
+@media (max-width: 600px){
+    .accordianHeader {
+        width: 90vw;
+
+    }
+}
+
+/* ============================ OVERALL: SECTION CSS ============================== */
+
+section {
+    width: 80vw;
+    margin:auto;
+    padding: 50px 50px;
+}
+

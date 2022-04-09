@@ -1,36 +1,38 @@
-import { useState, useRef} from "react";
+import { useState, useRef, useContext } from "react";
 import useInput from "../../hooks/use-input";
 import Carousel from "../../components/UI/Carousel/Carousel";
 import ButtonDown from "../../components/UI/ButtonDown/ButtonDown";
 import FormLayout from "../../components/Layout/FormLayout/FormLayout";
 import * as img from "../../assets/landing";
 import {peeps} from "../../assets/person";
+import { AuthContext } from "../../store/AuthContextProvider";
 
 import styles from "./landingpage.module.css";
+import { useNavigate } from "react-router";
 
 /**
  * LandingPage consists of 2 sections - Carousel Header and Form Avatar section
- * Only upon the last carousel header will (1) form (2) button appear
- * Button click scrolls down to form section
+ * Only upon the last carousel header will (1) form (2) ButtonDown appear
+ * ButtonDown click scrolls down to form section
  * 
  */
 function LandingPage(){
     //(A) STATES
     const [ isLast, setIsLast ] = useState(false);
     const scrollRef = useRef(null);
+    const ctx = useContext(AuthContext);
+    const navigate = useNavigate();
     const {
             input,
-            isTouched,
             error,
             inputIsValid,
             inputHasError,
             handleError,
             handleInput,
             handleIsTouched,
-            // setReset
         } = useInput();
 
-    // ==============================FORM AVATAR LOGIC========================================//
+    // ==============================HEADER CAROUSEL LOGIC========================================//
     //(B) Sliders content for header carousel
     const carouselArray = [
         {
@@ -65,11 +67,14 @@ function LandingPage(){
     //(F) FORM SUBMISSION HANDLER
     const handleSubmit = (e) => {
         e.preventDefault();
+        console.log(e.target.value);
         if (!formIsValid){
             handleError("Click on an avatar to begin!");
             return;
         }
         console.log("result", +input +1);
+        ctx.setAvatar("peep" + (+input + 1));
+        navigate("/register");
     }
 
     //=======================================================================================//
@@ -94,8 +99,8 @@ function LandingPage(){
             <div className={styles.avatars}>
             {Array.from(Array(12)).map((_, index) => (
                 <div key={index}>
-                <input type="radio" id={index} name="avatar" value={index} onChange={handleInput} onBlur={handleIsTouched}/>
-                <label htmlFor={index} className={+index === +input && styles.selectedLabel}>
+                <input type="radio" id={index} name="avatar" value={index} onChange={(e) => handleInput(e.target.value)} onBlur={handleIsTouched}/>
+                <label htmlFor={index} className={(+index === +input) ? styles.selectedLabel : ""}>
                     <img src={peeps["peep" + (index+1)]} alt={`peep` + index}/>
                 </label>
                 </div>

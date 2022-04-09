@@ -123,10 +123,11 @@
   display: inline-block;
   min-width: 300px;
   height: 200px;
-  background-image: url("../../assets/menu/star.png");
+  background-image: url("../../assets/doodles/star.png");
   background-repeat: no-repeat;
   z-index:2;
   object-fit: contain;
   background-position: right top;
   object-fit: contain;
 }
+
