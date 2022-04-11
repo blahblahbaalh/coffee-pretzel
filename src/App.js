@@ -6,7 +6,7 @@ import CafePage from "./pages/CafePage";
 import LandingPage from "./pages/LandingPage/LandingPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
-import Accordian from "./components/UI/Accordian/Accordian";
+
 
 function App() {
   return (

@@ -1,9 +1,18 @@
+import Todo from "../../components/Layout/Todo/Todo";
+import ButtonOk from "../../components/UI/ButtonOk/ButtonOk";
 
+import styles from "./registerpage.module.css";
 
-function RegisterPageSetTodo(){
+function RegisterPageSetTodo({onSetInputs, id}){
+
+    const handleClick = () => {
+        onSetInputs(id, {}); //sending a blank as Todos managed by global state
+    }
+
     return(
         <>
-        <h1>Set To Do</h1>
+        <Todo />
+        <ButtonOk className={styles.buttonok} type="button" onClick={handleClick} />
         </>
     )
 }

@@ -53,7 +53,7 @@ function RegisterPage(){
             disabled: false,
             formLayoutHeader: "Set Your Tasks",
             accordianHeader: "Set Todo",
-            children: <RegisterPageSetTodo onSetInputs={onSetInputs} id="todos" inputs={inputs["todos"]}/>,
+            children: <RegisterPageSetTodo onSetInputs={onSetInputs} id="todos"/>,
         },
         {
             id: "name",
@@ -66,7 +66,7 @@ function RegisterPage(){
 
 
     return(
-        <FormLayout h1={accordianContent[selectedAcc].formLayoutHeader} buttonText={!inputs["name"] && "Proceed"} >
+        <FormLayout h1={accordianContent[selectedAcc].formLayoutHeader} buttonText={(selectedAcc=== accordianContent.length-1) && "Proceed"} >
             {
                 JSON.stringify(inputs)
             }

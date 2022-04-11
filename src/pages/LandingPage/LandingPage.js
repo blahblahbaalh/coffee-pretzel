@@ -45,7 +45,7 @@ function LandingPage(){
         },
         {
             img: null,
-            h1: <h1>Get<br/> motivated and focus!</h1>,
+            h1: <h1>Get<br/> motivated and focus with others!</h1>,
         }
     ];
 
@@ -54,7 +54,9 @@ function LandingPage(){
 
     //(D) ButtonDown onClick handler will scrollpage to form section
     const onClickJoinNow = () => {
-        scrollRef.current.scrollIntoView();//!<-- TN: window.scrollTo(formRef) does not work in react
+        scrollRef.current.scrollIntoView({
+            behavior: "smooth"
+        });//!<-- TN: window.scrollTo(formRef) does not work in react
     }
 
     // ==============================FORM AVATAR LOGIC========================================//
@@ -94,7 +96,7 @@ function LandingPage(){
         </header>
 
         {/****  FORM AVATAR SECTION*****/}
-        { isLast && <h1>Here</h1>}
+        { isLast && 
         <FormLayout ref={scrollRef} disabled={inputHasError} handleSubmit={handleSubmit} h1="Pick Your Character" buttonText="Proceed" error={error}>
             <div className={styles.avatars}>
             {Array.from(Array(12)).map((_, index) => (
@@ -107,6 +109,7 @@ function LandingPage(){
             ))}
             </div>
          </FormLayout>
+        }
         </>
     )
 }

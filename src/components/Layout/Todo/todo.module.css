@@ -1,0 +1,67 @@
+.todos {
+    width:60vw;
+    min-width: 300px;
+    background-color: var(--blackboard);
+    margin:auto;
+    margin-bottom: 100px;
+    color: white;
+    font-family: var(--handwrittenFont);
+
+    display:flex;
+    flex-direction: column;
+}
+
+.todo {
+    display: grid;
+    grid-template-columns: 10% auto minmax(80px, 20%) minmax(40px, 10%);
+
+}
+
+.todo > div {
+    width: 100%;
+    height: 100%;
+    border: 1px solid white;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.todo input, .todo textarea {
+    font-family: inherit;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    color: white;
+}
+
+
+.todo textarea{
+    padding-left: 10px;
+    resize: none;
+}
+
+
+.todo input[type=number]{
+    text-align:center;
+    border: none;
+    max-width: 50px;
+}
+
+
+.pomodoroInput {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.todo button, .todo select, .todo option {
+    background-color: var(--blackboard);
+    color: white;
+    text-align: center;
+}
+
+.todo button[disabled] {
+    color: grey;
+}

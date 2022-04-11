@@ -43,7 +43,7 @@
 
 
 
-h1 {
+.carousel h1 {
   width: 40vw;
   min-width: 250px;
   margin:auto;

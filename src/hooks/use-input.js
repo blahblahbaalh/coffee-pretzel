@@ -21,6 +21,7 @@ function useInput(otherValidation = defaultValidation){
         setError("");
     }, []);
 
+
     const handleIsTouched = () => {
         setIsTouched(true);
     }

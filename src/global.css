@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Merriweather+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Playfair+Display+SC:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap&family=Kalam:wght@300;400;700&family=Merriweather+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Playfair+Display+SC:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap");
 /* font-family: 'Kalam', cursive;
 font-family: 'Merriweather Sans', sans-serif;
 font-family: 'Playfair Display SC', serif; */
@@ -9,6 +9,7 @@ font-family: 'Playfair Display SC', serif; */
   --logoFont: "Playfair Display SC", serif, sans-serif;
   --handwrittenFont: "Kalam", cursive, sans-serif;
   --merriweatherFont: "Merriweather Sans", sans-serif;
+  --signFont: "Pacifico", sans-serif;
   /* -----------COLORS------------- */
   --lightBrown: #e5d4c7;
   --brown: #c69b7b;
@@ -17,6 +18,7 @@ font-family: 'Playfair Display SC', serif; */
   --peach: #feeee1;
   --lightPeach: #fffbfb;
   --black: #121213;
+  --blackboard: #393939;
   --white: #ffff;
   --grey: #8d8d8d;
   --shadow: drop-shadow(0 10px 4px rgba(128, 111, 111, 0.411));
@@ -58,4 +60,7 @@ img {
   max-width: 100%;
 }
 
+.hidden {
+  display: none;
+}
 /* ======================================================== */
