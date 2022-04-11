@@ -1,147 +1,20 @@
 
-import { useReducer, useState } from "react";
-import { v4 as uuid } from 'uuid';
+import {  useContext, useState } from "react";
+import TodoNew from "./TodoNew";
 
 import styles from "./todo.module.css";
+import { TodoContext, ACTIONS } from "../../../store/TodoContextProvider";
 
-const MOCK_TODOLIST = [
-    {
-        id: "todo1",
-        todo: "✧･ﾟ: *✧･ﾟ:* Welcome *:･ﾟ✧*:･ﾟ✧",
-        pomodoro: { current: 1, total: 4, lastTimeSnapshot: ""},
-        status: "PENDING", // "PAUSED" / "STARTED" / "PENDING" / "COMPLETED"
-        isEditDisabled: true,
-    },
-    {
-        id: "todo2",
-        todo: "Double click to start edit existing Todos. Select options to delete.",
-        pomodoro: { current: 3, total: 3, lastTimeSnapshot: ""},
-        status: "PENDING", // "PAUSED" / "STARTED" / "PENDING" / "COMPLETED" 
-        isEditDisabled: true,
-    },
-    
-];
 
-const ACTIONS = {
-    CREATE_TODO: "CREATE_TODO",
-    DELETE_TODO: "DELETE_TODO",
-    UPDATE_STATUS: "UPDATE_STATUS",
-    UPDATE_TODO: "UPDATE_TODO",
-    TOGGLE_ISEDITDISABLED: "TOGGLE_ISEDITDISABLED",
-
-}
-
-const todoReducer = (state, action) => {
-    const { type, payload } = action;
-    console.log('action', action);
-    switch(type) {
-        case ACTIONS.CREATE_TODO: {
-            const { todo, pomodoro: {total}} = payload;
-            return [
-                ...state,
-                {
-                    id: uuid(),
-                    todo,
-                    pomodoro: {
-                        current: 0,
-                        total: total,
-                        lastTimeSnapshot: 0,
-                    },
-                    status: "PENDING",
-                    isEditDisabled: true
-                }
-            ]
-        }
-        case ACTIONS.DELETE_TODO: {
-            const { id } = payload;
-            return state.filter(each => each.id !== id);
-        }
-        case ACTIONS.UPDATE_STATUS: {
-            const { status, id } = payload;
-            return state.map(each => {
-                if (each.id === id){
-                    return {
-                        ...each,
-                        status,
-                    }
-                }else {
-                    return each
-                }
-            })
-        }
-        case ACTIONS.UPDATE_TODO: {
-            const { todo = null, total = null, id } = payload;
-            console.log("todo", todo, "total", total, "id", id);
-            return state.map(each => {
-                if (each.id === id){
-                    return {
-                        ...each,
-                        todo: (todo.trim() === "" ? each.todo : todo),
-                        pomodoro: {
-                            ...each.pomodoro,
-                            total: total || each.pomodoro.total,
-                        },
-                        isEditDisabled: true
-                    }
-                } else {
-                    return each
-                }
-            });
-        }
-        case ACTIONS.TOGGLE_ISEDITDISABLED: {
-            const {id} = payload;
-            return state.map(each => {
-                if (each.id === id){
-                    return {
-                        ...each,
-                        isEditDisabled: false
-                    }
-                } else {
-                    return {
-                        ...each,
-                        isEditDisabled: true
-                    }
-                }
-            });
-        }
-        default: return;
-    }
-};
 
 
 function Todo(){
-    // =========================================== STATES ============================================//
     //(A) STATES:
-    const [todoList, dispatchTodo ] = useReducer(todoReducer, MOCK_TODOLIST); //For Existing Todos in overallTodoList
-    const [newTodo, setNewTodo ] = useState({ //For new todo keystroke
-        todo: "",
-        total: 1
-    });
     const [editTodo, setEditTodo ] = useState({ //For existing todo keystroke
         todo: null,
         total: null
-    })
-
-    // ======================================= FORM: NEW TODO ================================================//
-    //(B1) To handle keystroke changes to NEW input field of name "todo" and "total"
-    const handleChangeNew = (e) => {
-        const { name, value } = e.target; 
-        setNewTodo(prev => ({
-            ...prev,
-            [name]: value
-        }))
-    }
-
-    //(B2) To handle adding NEW input into the reducer
-    const handleSubmitNew = (e) => {
-        e.preventDefault();
-        const { todo, total } = newTodo;
-        dispatchTodo({type: ACTIONS.CREATE_TODO, payload: {todo, pomodoro: {total}}}); //To save to reducer
-        setNewTodo({todo: "", total: 1});
-    }
-
-    //(B3) To disable newTodo form submit button "+"
-    const isNewFormButtonDisabled = newTodo.todo.trim() === "";
+    });
+    const ctx = useContext(TodoContext);
 
     // ======================================== FORM: EXISTING TODOSLIST =================================================//
     //(C1) To handle status change from dropdown select-option 
@@ -150,9 +23,9 @@ function Todo(){
     const handleStatusEdit = (e, id) => {
         const { name, value } = e.target;
         if (value === "DELETE_TODO") {
-            return dispatchTodo({type: ACTIONS[value], payload: {id}})
+            return ctx.dispatchTodo({type: ACTIONS[value], payload: {id}})
         }
-        dispatchTodo({type: ACTIONS[name], payload: {status: value, id}});
+        ctx.dispatchTodo({type: ACTIONS[name], payload: {status: value, id}});
     }
 
     //(C2) To handle 
@@ -160,9 +33,9 @@ function Todo(){
     //2- set the todos into a temporary state: newTodo (st if user enter empty, we can retrieve the original field)
     const handleToggleEdit = (id) => {
         //(1)
-        dispatchTodo({type: ACTIONS.TOGGLE_ISEDITDISABLED, payload: {id}});
+        ctx.dispatchTodo({type: ACTIONS.TOGGLE_ISEDITDISABLED, payload: {id}});
         //(2)
-        const foundTodo = todoList.find(each => each.id === id);
+        const foundTodo = ctx.todoList.find(each => each.id === id);
         setEditTodo({todo: foundTodo.todo, total: foundTodo.total, id: id});
     }
 
@@ -180,7 +53,7 @@ function Todo(){
     const handleSubmitEditing = (e) => {
         e.preventDefault();
         const { todo, total, id } = editTodo;
-        editTodo.id && dispatchTodo({type: ACTIONS.UPDATE_TODO, payload: { todo, total, id}});
+        editTodo.id && ctx.dispatchTodo({type: ACTIONS.UPDATE_TODO, payload: { todo, total, id}});
         //resetting
         setEditTodo({
             todo: null,
@@ -199,20 +72,14 @@ function Todo(){
                 <div>ACTION</div>
             </div>
 
-             {/* ================ NEW INPUT FORM ================ */}
-            <form className={`${styles.newForm} ${styles.todo}`} onSubmit={handleSubmitNew}>
-                <div>NEW</div>
-                <textarea name="todo" value={newTodo.todo} onChange={handleChangeNew} type="text" placeholder="Add a Task. Enter to save" required/>
-                <div className={styles.pomodoroInput}> <input name="total" value={newTodo.total} onChange={handleChangeNew} type="number" min="1" max="20" placeholder="Estimated Pomodoro Time: ? x 30mins" required /> </div>
-                <button type="submit" disabled={isNewFormButtonDisabled}> &#43; </button>
-            </form>
-
+            {/* ========== NEW INPUT FORM ========== */}
+            <TodoNew />
             {/* ========== EDITING EXISTING INPUT FORM ========== */}
         {
-            todoList.map((each, index) => (
+            ctx.todoList.map((each, index) => (
                 <form className={styles.todo} onSubmit={handleSubmitEditing} onBlur={handleSubmitEditing} onDoubleClick={() => handleToggleEdit(each.id)}  key={each.id}>
                     <div>{index+1}</div>
-                    <textarea 
+                    <input 
                         type="text" 
                         className={styles.todoName} 
                         // readOnly={each.isEditDisabled}
