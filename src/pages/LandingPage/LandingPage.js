@@ -5,7 +5,8 @@ import ButtonDown from "../../components/UI/ButtonDown/ButtonDown";
 import FormLayout from "../../components/Layout/FormLayout/FormLayout";
 import * as img from "../../assets/landing";
 import {peeps} from "../../assets/person";
-import { AuthContext } from "../../store/AuthContextProvider";
+import { UserContext, USER_ACTIONS } from "../../store/UserContextProvider";
+
 
 import styles from "./landingpage.module.css";
 import { useNavigate } from "react-router";
@@ -20,7 +21,7 @@ function LandingPage(){
     //(A) STATES
     const [ isLast, setIsLast ] = useState(false);
     const scrollRef = useRef(null);
-    const ctx = useContext(AuthContext);
+    const ctx = useContext(UserContext);
     const navigate = useNavigate();
     const {
             input,
@@ -75,7 +76,7 @@ function LandingPage(){
             return;
         }
         console.log("result", +input +1);
-        ctx.setAvatar("peep" + (+input + 1));
+        ctx.dispatchUser({type: USER_ACTIONS.SET_AVATAR, payload: {userAvatar: "peep" + (+input + 1)}});
         navigate("/register");
     }
 

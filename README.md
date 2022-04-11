@@ -41,6 +41,9 @@ Be in the ultimate zen-mode, overlooking gorgeous window-side scenary, among oth
 - (1) Todo Blackboard
 - [ ] /table
 - (1) JS Timer
+- [ ] TO FIX / TIDY
+-- useInput hook
+-- form UI error messages
 
 ## Week 4
 - [ ] Leaderboard

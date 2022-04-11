@@ -1,6 +1,7 @@
 import AvatarHead from "../AvatarHead/AvatarHead";
 import Navbar from "../Navbar/Navbar";
-import { AuthContext } from "../../../store/AuthContextProvider";
+import { UserContext } from "../../../store/UserContextProvider";
+
 
 import styles from "./layout.module.css";
 import { useContext } from "react";
@@ -8,7 +9,7 @@ import { useContext } from "react";
 //Overall Layout for Main page and cafe page
 //1. To render avatarHead IOI user has selected an avatar
 function Layout({children}){
-    const ctx = useContext(AuthContext);
+    const ctx = useContext(UserContext);
 
     return(
         <>
@@ -16,7 +17,7 @@ function Layout({children}){
         <main className={styles.layout}>
             {children}
         </main>
-        {ctx.userAvatar && <AvatarHead peep={ctx.userAvatar}/>}
+        {ctx.user.userAvatar && <AvatarHead peep={ctx.user.userAvatar}/>}
         </>
     )
 }

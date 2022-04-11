@@ -1,12 +1,14 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import FormLayout from "../../components/Layout/FormLayout/FormLayout";
 import Accordian from "../../components/UI/Accordian/Accordian";
 import RegisterPageDrinks from "./RegisterPageDrinks";
 import RegisterPageLocation from "./RegisterPageLocation";
 import RegisterPageSetTodo from "./RegisterPageSetToDo";
 import RegisterPageSignName from "./RegisterPageSignName";
+import { UserContext, USER_ACTIONS } from "../../store/UserContextProvider";
 
 import styles from "./registerpage.module.css";
+import { useNavigate } from "react-router";
 
 function RegisterPage(){
     //(A) STATES
@@ -14,9 +16,11 @@ function RegisterPage(){
     const [ inputs, setInputs ] = useState({
         "location": null,
         "todos": null,
-        "drinks": null,
-        "name": null
+        "drink": null,
+        "username": null
     });
+    const ctx = useContext(UserContext);
+    const navigate = useNavigate();
 
     //(B) Parent<-- Child(Accordian): To toggle accordian open and close
     const onSetSelectedAcc = (id) => {
@@ -42,11 +46,11 @@ function RegisterPage(){
             children: <RegisterPageLocation onSetInputs={onSetInputs} id="location" inputs={inputs["location"]}/>,
         },
         {
-            id: "drinks",
+            id: "drink",
             disabled: false,
             formLayoutHeader: "Brew Your Drink",
-            accordianHeader: "Drinks",
-            children: <RegisterPageDrinks onSetInputs={onSetInputs} id="drinks" inputs={inputs["drinks"]}/>,
+            accordianHeader: "Drink",
+            children: <RegisterPageDrinks onSetInputs={onSetInputs} id="drink" inputs={inputs["drink"]}/>,
         },
         {
             id: "todos",
@@ -56,19 +60,28 @@ function RegisterPage(){
             children: <RegisterPageSetTodo onSetInputs={onSetInputs} id="todos"/>,
         },
         {
-            id: "name",
+            id: "username",
             disabled: false,
             formLayoutHeader: "Sign Your Name",
             accordianHeader: "Order",
-            children: <RegisterPageSignName onSetInputs={onSetInputs} id="name" inputs={inputs["name"]}/>,
+            children: <RegisterPageSignName onSetInputs={onSetInputs} id="username" inputs={inputs["username"]}/>,
         },
     ];
 
+    const proceedDisabled = !inputs.username || inputs.username.trim() === "";
+
+    const handleProceed = () => {
+        ctx.dispatchUser({type: USER_ACTIONS.CREATE_USER, payload: inputs});
+        alert("NEXT: NAV TO CAFE PAGE");
+        //navigate(`/cafe?locId=${ctx.user.cafe.location}`); 
+
+    }
+
 
     return(
-        <FormLayout h1={accordianContent[selectedAcc].formLayoutHeader} buttonText={(selectedAcc=== accordianContent.length-1) && "Proceed"} >
+        <FormLayout h1={accordianContent[selectedAcc].formLayoutHeader} handleSubmit={handleProceed} disabled={proceedDisabled} buttonText={(selectedAcc=== accordianContent.length-1) && "Proceed"} >
             {
-                JSON.stringify(inputs)
+                JSON.stringify(ctx.user)
             }
             {
                 accordianContent.map((each, index) => (

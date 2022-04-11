@@ -1,16 +1,16 @@
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
-import AuthContextProvider from "./store/AuthContextProvider";
 import TodoContextProvider from './store/TodoContextProvider';
+import UserContextProvider from './store/UserContextProvider';
 
 const root = createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
-    <AuthContextProvider>
+    <UserContextProvider>
        <TodoContextProvider>
-      <App />
+       <App />
       </TodoContextProvider>
-    </AuthContextProvider>
+    </UserContextProvider>
   </BrowserRouter>
 );
