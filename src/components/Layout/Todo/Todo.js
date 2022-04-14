@@ -3,12 +3,12 @@ import {  useContext, useState } from "react";
 import TodoNew from "./TodoNew";
 
 import styles from "./todo.module.css";
-import { TodoContext, ACTIONS } from "../../../store/TodoContextProvider";
+import { TodoContext, ACTIONS } from "../../../store/todo-context";
 
 
 
 
-function Todo(){
+function Todo({className, onClick, isCollapsed, isTable}){
     //(A) STATES:
     const [editTodo, setEditTodo ] = useState({ //For existing todo keystroke
         todo: null,
@@ -61,11 +61,15 @@ function Todo(){
         })
     }
 
+    //To det what to map. if its collapse view, only 1 row of Todo in view. if its full view, map thr entire list.
+    const todoListToBeMapped = isCollapsed ? [ctx.todoList[0]] : ctx.todoList;
+    console.log("todoListToBeMapped", [ctx.todoList[0]]);
+
     return(
         <>
-        <div className={styles.todos}>
+        <div className={`${styles.todos} ${className}`}>
             {/* ================ HEADER ================ */}
-            <div className={styles.todo}>
+            <div className={styles.todo} onClick={onClick}>
                 <div>NO.</div>
                 <div>TODO</div>
                 <div>SETS</div>
@@ -73,10 +77,10 @@ function Todo(){
             </div>
 
             {/* ========== NEW INPUT FORM ========== */}
-            <TodoNew />
+           {!isTable && <TodoNew />}
             {/* ========== EDITING EXISTING INPUT FORM ========== */}
         {
-            ctx.todoList.map((each, index) => (
+            todoListToBeMapped.map((each, index) => (
                 <form className={styles.todo} onSubmit={handleSubmitEditing} onBlur={handleSubmitEditing} onDoubleClick={() => handleToggleEdit(each.id)}  key={each.id}>
                     <div>{index+1}</div>
                     <input 
@@ -117,6 +121,8 @@ function Todo(){
                 </form>
             ))
         }
+        {/* ========== NEW INPUT FORM: shifted to bottom if isTable page + is not collapsed ========== */}
+        {isTable && !isCollapsed && <TodoNew />}
         </div>
         </>
     )

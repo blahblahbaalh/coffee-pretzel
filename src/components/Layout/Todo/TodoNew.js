@@ -1,7 +1,7 @@
 
 
 import { useContext, useState } from "react";
-import { TodoContext, ACTIONS } from "../../../store/TodoContextProvider";
+import { TodoContext, ACTIONS } from "../../../store/todo-context";
 import styles from "./todo.module.css";
 
 function TodoNew(){

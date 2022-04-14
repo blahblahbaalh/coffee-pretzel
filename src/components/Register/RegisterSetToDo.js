@@ -1,7 +1,7 @@
-import Todo from "../../components/Layout/Todo/Todo";
-import ButtonOk from "../../components/UI/ButtonOk/ButtonOk";
+import Todo from "../Layout/Todo/Todo";
+import ButtonOk from "../UI/ButtonOk/ButtonOk";
 
-import styles from "./registerpage.module.css";
+import styles from "./register.module.css";
 
 function RegisterPageSetTodo({onSetInputs, id}){
 

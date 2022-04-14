@@ -1,8 +1,8 @@
 import useInput from "../../hooks/use-input";
-import ButtonOk from "../../components/UI/ButtonOk/ButtonOk";
-import {cold, hot} from "../../assets/drinks";
+import ButtonOk from "../UI/ButtonOk/ButtonOk";
+import {occupiedDrink} from "../../assets/drinks";
 
-import styles from "./registerpage.module.css";
+import styles from "./register.module.css";
 import { useEffect } from "react";
 
 
@@ -33,27 +33,15 @@ function RegisterPageDrinks({onSetInputs, id, inputs}){
         <div className={styles.drinks}>
         {
             //Mapping Obj-->Array of hot drinks where key(drinkName):value(svg) and wrapping them in label+input
-            Object.keys(hot).map(key => (
+            Object.keys(occupiedDrink).map(key => (
                 <>
                 <label className={`${cssSelected(key)} ${styles.hover}`} htmlFor={key}>
-                    <img src={hot[key]} alt={key} />
-                    <p>{key.slice(3)}</p>
+                    <img src={occupiedDrink[key]} alt={key} />
+                    <p>{key.includes("hot") ? key.slice(3) : key.slice(4)}</p>
                 </label>
                 <input id={key} type="radio" value={key} name="drink" onChange={(e) => handleInput(e.target.value)}/>
                 </>
             ))
-        }
-        {
-            //Mapping Obj-->Array of cold drinks where key(drinkName):value(svg) and wrapping them in label+input
-            Object.keys(cold).map(key => (
-                <>
-               <label className={`${cssSelected(key)} ${styles.hover}`} htmlFor={key}>
-                <img  src={cold[key]} alt={key} />
-                <p>{key.slice(4)}</p>
-               </label>
-               <input id={key} type="radio" value={key} name="drink" onChange={(e) => handleInput(e.target.value)}/>
-               </>
-           ))
         }
         </div>
         <ButtonOk type="button" onClick={handleOk} disabled={!isTouched || !inputIsValid} className={styles.buttonok}></ButtonOk>

@@ -2,17 +2,22 @@ import { createContext, useReducer } from "react";
 const { v4: uuid } = require('uuid');
 
 //1.
+// const initialState = {
+//     userId: null,
+//     username: null, //MrBlah
+//     userAvatar: null,
+//     cafe: {
+//         location: null, //eg "-JhoMGoAFc"
+//         drink: null, //eg hotMocha
+//     },
+// };
 const initialState = {
-    userId: null,
-    username: null,
-    userAvatar: null,
-    notification: {
-        number: 0,
-        messages: []
-    },
+    userId: "u01",
+    username: "Mr Blah",
+    userAvatar: "peep1",
     cafe: {
-        location: null,
-        drink: null,
+        location: "r1N4CmHq0RA",
+        drink: "hotMocha",
     },
 };
 

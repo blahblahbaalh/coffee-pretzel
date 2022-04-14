@@ -26,7 +26,6 @@ export const cafeLocationList = [
     },
     {
       location: "Tokyo",
-    //   link: "X437XmpsopA",
       id: "HpdO5Kq3o7Y",
     },
     {
@@ -40,6 +39,22 @@ export const cafeLocationList = [
     {
       location: "Manhattan",
       id: "AdUw5RdyZxI",
+    },
+    // {
+    //   location: "Swedish Rail",
+    //   id: "JnQtbJBdC1k",
+    // },
+    {
+      location: "Hawaii",
+      id: "5G2OvrGZGCA",
+    },
+    {
+      location: "Alaska",
+      id: "r0cwB9l-zy0",
+    },
+    {
+      location: " Mt.Spokane, Washington",
+      id: "r1N4CmHq0RA",
     },
   ];
 

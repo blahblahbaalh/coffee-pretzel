@@ -1,6 +1,6 @@
 import AvatarHead from "../AvatarHead/AvatarHead";
 import Navbar from "../Navbar/Navbar";
-import { UserContext } from "../../../store/UserContextProvider";
+import { UserContext } from "../../../store/user-context";
 
 
 import styles from "./layout.module.css";
@@ -16,8 +16,8 @@ function Layout({children}){
         <Navbar/>
         <main className={styles.layout}>
             {children}
-        </main>
         {ctx.user.userAvatar && <AvatarHead peep={ctx.user.userAvatar}/>}
+        </main>
         </>
     )
 }

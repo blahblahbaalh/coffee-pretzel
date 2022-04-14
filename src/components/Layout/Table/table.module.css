@@ -19,21 +19,33 @@
 }
 
 .plant {
-  max-width: 450px;
+  width: 30vw;
+  max-width: 350px;
+  min-width: 300px;
   grid-column: 1;
-  grid-row: 5;
+  grid-row: 7 / -1;
+  align-self: flex-end;
+  transform-origin: bottom left;  
+}
+
+@media (max-width: 568px){
+  .plant {
+    display: none;
+  }
 }
 
 .coffee {
-  width: 200px;
-  grid-column: -9;
-  grid-row: 9;
+  grid-column: -4;
+  grid-row: 11 / -1;
+  width: 250px;
+  align-self: flex-end;
+  justify-self: flex-end;
 }
 
 .table::after {
   content: "";
   display: block;
-  background-image: url("/src/assets/common/checkered.png");
+  background-image: url("/src/assets/table/checkered.png");
   background-repeat: repeat-x;
   border-top: 5px solid var(--black);
   border-bottom: 5px solid var(--black);
@@ -48,12 +60,6 @@
 
 }
 
-
-@media (max-width: 540px){
-  .coffee {
-    grid-column: -5;
-  }
-}
 
 /* ======================================================= */
 /* To centralise youtube video onto window */

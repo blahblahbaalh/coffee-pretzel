@@ -37,7 +37,7 @@ Be in the ultimate zen-mode, overlooking gorgeous window-side scenary, among oth
 - (4) Name
 
 ## Week 3 (CURRENT)
-- [ ] /register form
+- [X] /register form
 - (1) Todo Blackboard
 - [ ] /table
 - (1) JS Timer

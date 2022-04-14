@@ -2,10 +2,10 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import "./global.css";
 import "./globalAnimation.css";
 import Layout from "./components/Layout/Layout/Layout";
-import CafePage from "./pages/CafePage";
-import LandingPage from "./pages/LandingPage/LandingPage";
-import NotFoundPage from "./pages/NotFoundPage";
-import RegisterPage from "./pages/RegisterPage/RegisterPage";
+import CafePage from "./pages/Cafe";
+import LandingPage from "./pages/Landing";
+import NotFoundPage from "./pages/NotFound";
+import RegisterPage from "./pages/Register";
 
 
 function App() {

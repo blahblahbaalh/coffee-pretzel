@@ -1,5 +1,5 @@
 import coldEmpty from "./cold-empty.svg";
-import coldHot from "./cold-empty.svg";
+import hotEmpty from "./hot-empty.svg";
 
 import coldChocolate from "./cold-chocolate.svg";
 import coldTea from "./cold-tea.svg";
@@ -11,6 +11,8 @@ import hotLatte from "./hot-latte.svg";
 import hotMocha from "./hot-mocha.svg";
 
 
-export const empty = {coldEmpty, coldHot};
-export const cold = { coldChocolate, coldTea, coldPassion};
-export const hot = { hotAffogato, hotAmericano, hotLatte, hotMocha};
+export const emptyDrink = {coldEmpty, hotEmpty};
+export const occupiedDrink = { 
+    coldChocolate, coldTea, coldPassion, 
+    hotAffogato, hotAmericano, hotLatte, hotMocha
+};

@@ -1,14 +1,14 @@
 import { useState, useRef, useContext } from "react";
 import useInput from "../../hooks/use-input";
-import Carousel from "../../components/UI/Carousel/Carousel";
-import ButtonDown from "../../components/UI/ButtonDown/ButtonDown";
-import FormLayout from "../../components/Layout/FormLayout/FormLayout";
+import Carousel from "../UI/Carousel/Carousel";
+import ButtonDown from "../UI/ButtonDown/ButtonDown";
+import FormLayout from "../Layout/FormLayout/FormLayout";
 import * as img from "../../assets/landing";
 import {peeps} from "../../assets/person";
-import { UserContext, USER_ACTIONS } from "../../store/UserContextProvider";
+import { UserContext, USER_ACTIONS } from "../../store/user-context";
 
 
-import styles from "./landingpage.module.css";
+import styles from "./landing.module.css";
 import { useNavigate } from "react-router";
 
 /**

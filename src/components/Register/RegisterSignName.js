@@ -1,9 +1,9 @@
 import { useContext, useState } from "react";
-import { UserContext } from "../../store/UserContextProvider";
+import { UserContext } from "../../store/user-context";
 import { peeps } from "../../assets/person";
 import { arrow } from "../../assets/doodles";
 
-import styles from "./registerpage.module.css";
+import styles from "./register.module.css";
 
 function RegisterPageSignName({onSetInputs, id, inputs}){
     const ctx = useContext(UserContext);

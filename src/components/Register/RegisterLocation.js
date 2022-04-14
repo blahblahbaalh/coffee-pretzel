@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import menu1 from "../../assets/menu/menu-1.png";
-import ButtonOk from "../../components/UI/ButtonOk/ButtonOk";
-import { cafeLocationList } from "../../data/cafeLocation";
+import ButtonOk from "../UI/ButtonOk/ButtonOk";
+import { cafeLocationList } from "../../data/locationList";
 import useInput from "../../hooks/use-input";
 
-import styles from "./registerpage.module.css";
+import styles from "./register.module.css";
 
 
 function RegisterPageLocation({onSetInputs, id, inputs}) {
