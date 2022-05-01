@@ -21,7 +21,7 @@ font-family: 'Playfair Display SC', serif; */
   --blackboard: #393939;
   --white: #ffff;
   --grey: #8d8d8d;
-  --shadow: drop-shadow(0 10px 4px rgba(128, 111, 111, 0.411));
+  --shadow: drop-shadow(0 10px 4px #806f6f69);
   --filterRed: invert(57%) sepia(45%) saturate(702%) hue-rotate(316deg) brightness(102%) contrast(96%);
 }
 

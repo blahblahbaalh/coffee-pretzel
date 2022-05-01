@@ -23,7 +23,7 @@
 
 .avatarHead sup{
     border-radius: 50%;
-    background-color: orange;
+    /* background-color: orange; */
     padding: 2px 6px;
     line-height: 0;
 }

@@ -13,7 +13,7 @@
   position: relative;
 }
 
-.table img {
+.table img, .coffeeContainer, .coffeeOccupiedWrapper, .coffeeOccupied {
     z-index: 2;
 
 }
@@ -34,12 +34,45 @@
   }
 }
 
-.coffee {
+.coffeeContainer {
   grid-column: -4;
-  grid-row: 11 / -1;
-  width: 250px;
   align-self: flex-end;
   justify-self: flex-end;
+  width: 250px;
+  height: 65vh;
+  max-height: 100%;
+  position: relative;
+  /* background-color:yellow; */
+}
+
+/* sorry bad css */
+.coffeeContainer.hot {
+  grid-row: 11 / -1;
+}
+
+.coffeeContainer.cold {
+  grid-row: 5 / -1;
+}
+
+.coffeeEmpty, .coffeeOccupiedWrapper {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.coffeeOccupiedWrapper {
+  /* background-color: rgba(25, 201, 240, 0.376); */
+  /*!<-- simulate pomodoro*/
+  /* height: 15%; */ 
+  overflow-y: hidden;
+}
+
+/* ! see if can merge above */
+.coffeeOccupied {
+  position: absolute;
+  bottom: 0;
+  left: 0;
 }
 
 .table::after {

@@ -79,10 +79,10 @@ function RegisterPage(){
     return(
         <FormLayout h1={accordianContent[selectedAcc].formLayoutHeader} handleSubmit={handleProceed} disabled={proceedDisabled} buttonText={(selectedAcc=== accordianContent.length-1) && "Proceed"} >
             {
-                JSON.stringify(ctx.user)
+                // JSON.stringify(ctx.user)
             }
             {
-                JSON.stringify(inputs)
+                // JSON.stringify(inputs)
             }
             {
                 accordianContent.map((each, index) => (

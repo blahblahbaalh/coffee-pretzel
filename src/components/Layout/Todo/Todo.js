@@ -81,12 +81,12 @@ function Todo({className, onClick, isCollapsed, isTable}){
             {/* ========== EDITING EXISTING INPUT FORM ========== */}
         {
             todoListToBeMapped.map((each, index) => (
-                <form className={styles.todo} onSubmit={handleSubmitEditing} onBlur={handleSubmitEditing} onDoubleClick={() => handleToggleEdit(each.id)}  key={each.id}>
+                <form onSubmit={handleSubmitEditing} onBlur={handleSubmitEditing} onDoubleClick={() => handleToggleEdit(each.id)}  key={each.id}>
+                    <div className={`${styles.todo} ${!each.isEditDisabled && styles.editEnabled}`} >
                     <div>{index+1}</div>
                     <input 
                         type="text" 
-                        className={styles.todoName} 
-                        // readOnly={each.isEditDisabled}
+                        readOnly={each.isEditDisabled}
                         onChange={handleChangeEdit}
                         name="todo"
                         value={(editTodo.id === each.id) ? editTodo.todo : each.todo}
@@ -98,7 +98,7 @@ function Todo({className, onClick, isCollapsed, isTable}){
                             type="number" 
                             min={each.pomodoro.current} 
                             max="20" 
-                            // readOnly={each.isEditDisabled}
+                            readOnly={each.isEditDisabled}
                             onChange={handleChangeEdit}
                             name="total"
                             value={(editTodo.id === each.id) ? editTodo.total : each.pomodoro.total}
@@ -118,6 +118,7 @@ function Todo({className, onClick, isCollapsed, isTable}){
                             <option value="DELETE_TODO">&#10007;</option>
                     </select>
                     <button className="hidden" type="submit">SUBMIT</button>
+                    </div>
                 </form>
             ))
         }

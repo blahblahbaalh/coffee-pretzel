@@ -6,14 +6,14 @@ const MOCK_TODOLIST = [
     {
         id: "todo1",
         todo: "✧･ﾟ: *✧･ﾟ:* Welcome *:･ﾟ✧*:･ﾟ✧",
-        pomodoro: { current: 1, total: 4, lastTimeSnapshot: ""},
+        pomodoro: { current: 1, total: 4, lastTimeSnapshot: 0},
         status: "PENDING", // "PAUSED" / "STARTED" / "PENDING" / "COMPLETED"
         isEditDisabled: true,
     },
     {
         id: "todo2",
         todo: "Double click to start edit existing Todos. Select options to delete.",
-        pomodoro: { current: 3, total: 3, lastTimeSnapshot: ""},
+        pomodoro: { current: 3, total: 3, lastTimeSnapshot: 0},
         status: "PENDING", // "PAUSED" / "STARTED" / "PENDING" / "COMPLETED" 
         isEditDisabled: true,
     },
@@ -26,6 +26,7 @@ export const ACTIONS = {
     UPDATE_STATUS: "UPDATE_STATUS",
     UPDATE_TODO: "UPDATE_TODO",
     TOGGLE_ISEDITDISABLED: "TOGGLE_ISEDITDISABLED",
+    UPDATE_POMODORO: "UPDATE_POMODORO"
 
 }
 
@@ -101,6 +102,10 @@ const todoReducer = (state, action) => {
                     }
                 }
             });
+        }
+        case ACTIONS.UPDATE_POMODORO: {
+            //IOI user click on pause or 
+            const { id, } = payload;
         }
         default: return;
     }

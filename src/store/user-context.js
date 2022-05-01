@@ -17,7 +17,7 @@ const initialState = {
     userAvatar: "peep1",
     cafe: {
         location: "r1N4CmHq0RA",
-        drink: "hotMocha",
+        drink: "hotLatte",
     },
 };
 
